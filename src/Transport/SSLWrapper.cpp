@@ -40,7 +40,9 @@ SSLWrapper::SSLWrapper()
 
 SSLWrapper::~SSLWrapper()
 {
+#ifndef LIBRESSL_VERSION_NUMBER
     FIPS_mode_set(0);
+#endif
     ENGINE_cleanup();
     CONF_modules_unload(1);
     EVP_cleanup();
